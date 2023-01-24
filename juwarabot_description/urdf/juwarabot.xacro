@@ -1,0 +1,137 @@
+<?xml version="1.0" ?>
+<robot name="juwarabot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find juwarabot_description)/urdf/materials.xacro" />
+<xacro:include filename="$(find juwarabot_description)/urdf/juwarabot.trans" />
+<xacro:include filename="$(find juwarabot_description)/urdf/juwarabot.gazebo" />
+<link name="base_link">
+  <inertial>
+    <origin xyz="0.13123148613922211 -0.0001730503856538379 0.4724766102022406" rpy="0 0 0"/>
+    <mass value="2220.013232322395"/>
+    <inertia ixx="148.384965" iyy="227.779064" izz="164.373477" ixy="-0.534166" iyz="0.117086" ixz="23.522908"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://juwarabot_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="red"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://juwarabot_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="caster_1">
+  <inertial>
+    <origin xyz="1.1102230246251565e-16 8.940148546178448e-17 -0.04489390103718115" rpy="0 0 0"/>
+    <mass value="2.689425199543993"/>
+    <inertia ixx="0.002645" iyy="0.002645" izz="0.001561" ixy="0.0" iyz="-0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.3975 -0.0 -0.101" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://juwarabot_description/meshes/caster_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.3975 -0.0 -0.101" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://juwarabot_description/meshes/caster_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="right_wheel_1">
+  <inertial>
+    <origin xyz="5.198905155686176e-06 0.04537695121096172 1.0177969578251123e-13" rpy="0 0 0"/>
+    <mass value="10.297047218995939"/>
+    <inertia ixx="0.029535" iyy="0.051878" izz="0.029535" ixy="3e-06" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.0135 -0.175 -0.0952" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://juwarabot_description/meshes/right_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.0135 -0.175 -0.0952" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://juwarabot_description/meshes/right_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="left_wheel_1">
+  <inertial>
+    <origin xyz="5.1989051557139315e-06 -0.04537695121096172 -8.784639682346551e-15" rpy="0 0 0"/>
+    <mass value="10.297047218995926"/>
+    <inertia ixx="0.029535" iyy="0.051878" izz="0.029535" ixy="-3e-06" iyz="0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.0135 0.175 -0.0952" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://juwarabot_description/meshes/left_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.0135 0.175 -0.0952" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://juwarabot_description/meshes/left_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="lidar_1">
+  <inertial>
+    <origin xyz="0.0008687623293602842 -1.897527103092979e-15 0.021929105936567536" rpy="0 0 0"/>
+    <mass value="0.7402162573890814"/>
+    <inertia ixx="0.000298" iyy="0.000289" izz="0.000246" ixy="0.0" iyz="0.0" ixz="-1.2e-05"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.6575 0.0 -0.076" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://juwarabot_description/meshes/lidar_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.6575 0.0 -0.076" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://juwarabot_description/meshes/lidar_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+<joint name="caster_joint" type="fixed">
+  <origin xyz="0.3975 0.0 0.101" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="caster_1"/>
+</joint>
+
+<joint name="left_wheel_joint" type="continuous">
+  <origin xyz="0.0135 0.175 0.0952" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="right_wheel_1"/>
+  <axis xyz="0 0 1"/>
+</joint>
+
+<joint name="right_wheel_joint" type="continuous">
+  <origin xyz="0.0135 -0.175 0.0952" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="left_wheel_1"/>
+  <axis xyz="0 0 1"/>
+</joint>
+
+<joint name="lidar_joint" type="fixed">
+  <origin xyz="0.6575 0.0 0.076" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="lidar_1"/>
+</joint>
+
+</robot>

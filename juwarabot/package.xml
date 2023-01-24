@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>juwarabot</name>
+  <version>0.0.0</version>
+  <description>The Juwarabot package</description>
+  <maintainer email="irfansalini@gmail.com">irfansalini</maintainer>
+  <license>BSD</license>
+
+  <build_depend>message_generation</build_depend>
+  <exec_depend>message_runtime</exec_depend>
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>roscpp</build_depend>
+  <build_depend>rospy</build_depend>
+  <build_export_depend>roscpp</build_export_depend>
+  <build_export_depend>rospy</build_export_depend>
+  <exec_depend>roscpp</exec_depend>
+  <exec_depend>rospy</exec_depend>
+
+  <depend>rosserial_python</depend>
+  <depend>urg_node</depend>
+  <depend>navigation</depend>
+  <depend>gmapping</depend>
+  <depend>teb_local_planner</depend>
+  <depend>joy</depend>
+  <depend>teleop_twist_joy</depend>
+  <depend>teleop_twist_keyboard</depend>
+  <depend>twist_mux</depend>
+  <depend>laser_scan_matcher</depend>
+  <depend>rosbridge_server</depend>
+  <depend>robot_localization</depend>
+  <depend>imu_tools</depend>
+  <depend>depthimage_to_laserscan</depend>
+
+</package>

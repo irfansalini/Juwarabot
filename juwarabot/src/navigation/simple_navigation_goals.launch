@@ -1,0 +1,5 @@
+<launch>
+
+  <node pkg="juwarabot" type="simple_navigation_goals.py" name="simple_navigation_goals"  output="screen">
+  </node>
+</launch>

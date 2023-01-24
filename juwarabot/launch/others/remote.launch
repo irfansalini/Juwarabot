@@ -1,0 +1,13 @@
+<?xml version="1.0" ?>
+
+<launch>
+
+	<arg name="rvizconfig" default="navigation/juwarabot_navigation"/>
+
+	<node name="rviz" pkg="rviz" type="rviz" required="true" args="-d $(find juwarabot)/rviz/$(arg rvizconfig).rviz" />
+
+	<include file="$(find juwarabot_teleop)/launch/juwarabot_teleop_key.launch" />
+
+<!-- 	<node name="rqt_reconfigure" pkg="rqt_reconfigure" type="rqt_reconfigure" /> -->
+
+</launch>

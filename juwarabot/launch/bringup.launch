@@ -1,0 +1,51 @@
+<?xml version="1.0" ?>
+<launch>
+
+<include file="$(find juwarabot)/launch/base/arduino.launch" />
+
+<include file="$(find juwarabot)/launch/base/lidar_sick.launch" />
+
+<include file="$(find juwarabot)/launch/base/laser_filters.launch" />
+
+<include file="$(find juwarabot)/launch/base/robot_model.launch" />
+
+<include file="$(find juwarabot)/launch/base/scan_matcher.launch" />
+
+<include file="$(find juwarabot)/launch/base/odom.launch" />
+
+<include file="$(find juwarabot)/launch/base/ekf_localization.launch" />
+
+<!--<include file="$(find juwarabot)/launch/base/twist_mux.launch" />-->
+
+<!--<node type="spots_service_server.py" name="spots_service_server" pkg="juwarabot" output="screen"/>-->
+
+<node type="clear_costmap_node.py" name="clear_costmap_node" pkg="juwarabot"/>
+
+<!-- <include file="$(find rosbridge_server)/launch/rosbridge_websocket.launch"/> -->
+
+<node type="robot_pose_publisher" name="robot_pose_publisher" pkg="juwarabot"/>
+
+<!-- <node pkg="capabilities" name="capability_server" type="capability_server" output="screen" required="true"/> -->
+
+  <arg name="map_name" default="gpcl_map3"/>
+  <arg name="map_file" default="$(find juwarabot_navigation)/maps/$(arg map_name).yaml"/>
+  <arg name="x_pos" default="2.6"/>
+  <arg name="y_pos" default="2.1"/>
+  <arg name="z_pos" default="1.0"/>
+  <arg name="cmd_vel_topic" default="/cmd_vel"/>
+  <arg name="odom_topic" default="/odometry/filtered"/>
+  <arg name="use_teb" default="true"/>
+  <arg name="open_rviz" default="false"/>
+  <arg name="rvizconfig" default="navigation/juwarabot_navigation"/>
+
+  <!-- Map server 
+  <node pkg="map_server" name="map_server" type="map_server" args="$(arg map_file)"/> -->
+
+<!-- <include file="$(find juwarabot)/launch/mapping/gmapping.launch" /> -->
+
+<!-- <include file="$(find juwarabot)/launch/navigation/exploration.launch" /> -->
+
+<!-- <include file="$(find juwarabot)/launch/navigation/navigation.launch" />  -->
+
+
+</launch>

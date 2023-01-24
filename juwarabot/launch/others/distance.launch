@@ -1,0 +1,5 @@
+<launch>
+
+  <node pkg="juwarabot" type="calculate_distance_traveled.py" name="calculate_distance_traveled"  output="screen">
+  </node>
+</launch>

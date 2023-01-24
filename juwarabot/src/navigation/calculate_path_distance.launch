@@ -1,0 +1,5 @@
+<launch>
+
+  <node pkg="juwarabot" type="calculate_path_distance.py" name="calculate_path_distance"  output="screen">
+  </node>
+</launch>
