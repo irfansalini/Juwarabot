@@ -1,0 +1,38 @@
+<?xml version="1.0" ?>
+
+<launch>
+  
+  <arg name="x_pos" default="0.0"/>
+  <arg name="y_pos" default="0.0"/>
+  <arg name="z_pos" default="0.0"/>
+  <arg name="cmd_vel_topic" default="/nav_vel"/>
+  <arg name="odom_topic" default="/odometry/filtered"/>
+  <arg name="use_teb" default="true"/>
+  <arg name="open_rviz" default="false"/>
+  <arg name="rvizconfig" default="navigation/medibotv4_navigation"/>
+
+  <!-- SLAM Gmapping -->
+  <include file="$(find medibotv4)/launch/mapping/gmapping.launch" />
+
+  <!-- AMCL -->
+  <include file="$(find medibotv4)/launch/navigation/amcl.launch">
+    <arg name="initial_pose_x" value="$(arg x_pos)"/>
+    <arg name="initial_pose_y" value="$(arg y_pos)"/>
+    <arg name="initial_pose_a" value="$(arg z_pos)"/>
+  </include>
+
+  <!-- move_base -->
+  <include file="$(find medibotv4)/launch/navigation/move_base.launch">
+    <arg name="cmd_vel_topic" value="$(arg cmd_vel_topic)"/>
+    <arg name="odom_topic" value="$(arg odom_topic)"/>
+    <arg name="use_teb" value="$(arg use_teb)"/>
+  </include>
+
+    <!-- rviz -->
+  <group if="$(arg open_rviz)"> 
+    <include file="$(find medibotv4)/launch/rviz.launch">
+      <arg name="rvizconfig" value="$(arg rvizconfig)"/>
+    </include>
+  </group>
+
+</launch>
